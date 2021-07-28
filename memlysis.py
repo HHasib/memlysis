@@ -1,28 +1,17 @@
-#take a filename as input argument and save it as that in a particular directory
-#also take volatility commands as arguments which is optional
-#e.g. python3 automation_1.py test(name of lime file: test.lime) locationof vol.py 
-
 import time
 import os
 import multiprocessing
 import paramiko
 import sys
 
-filename = 'dummy'
-vol_command = 'imageinfo'
-if (len(sys.argv)>2):
-    filename = sys.argv[1]
-    vol_command = sys.arg[2]
-else if (len(sys.argv)>1):
-    filename = sys.argv[1]   
-else:
-    pass
+
+
     
     
         
 def save_file():
 ##    print('listening to save...')
-    command = 'nc 192.168.0.102 4444 > %s.lime' %(filename)
+    command = 'nc 192.168.0.102 4444 > ram.lime'
     os.system(command)
 ##    print('Saved')
 
@@ -43,7 +32,11 @@ def remove_lime_mod(): # this removes the lime module from system kernel
     
 def volatility_commands(): #this runs memory analysis using volatility on the memo
     location_to_volatility = '/Users/DummyUser/Programs/volatility/'      #change the variable to wherever vol.py is installed
-    command = 'python %svol.py -f %s.lime %s'%(location_to_volatility, filename, vol_command) 
+    if (len(sys.argv)>1):
+        vol_command = sys.argv[1]   
+    else:
+        vol_command = 'imageinfo'
+    command = 'python %svol.py -f ram.lime %s'%(location_to_volatility, vol_command) 
     os.system(command)
     
 
