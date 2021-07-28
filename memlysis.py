@@ -3,11 +3,6 @@ import os
 import multiprocessing
 import paramiko
 import sys
-
-
-
-    
-    
         
 def save_file():
 ##    print('listening to save...')
