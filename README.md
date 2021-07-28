@@ -4,7 +4,7 @@ This is a program written in python3. Upon running this program it will automati
 
 To run the program simply type the following in the terminal:
 
-python3 memlysis.py 
+#python3 memlysis.py 
 
 To run a particular volatility command pass the name after the program name.For example:
 
