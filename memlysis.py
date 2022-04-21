@@ -5,19 +5,19 @@ import paramiko
 import sys
         
 def save_file():
-##    print('listening to save...')
+    print('listening to save...')
     command = 'nc 192.168.0.102 4444 > ram.lime'
     os.system(command)
-##    print('Saved')
+    print('Saved')
 
 def remote_commands(command):
-##    print("Connecting...")
+    print("Connecting...")
     client = paramiko.SSHClient()
     client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
     client.connect('192.168.0.102',username='root',password='root') #change it to whatever the ip and usernam and password is
     stdin, stdout, stderr = client.exec_command(command)
     client.close()
-##    print("Connection finished.")
+    print("Connection finished.")
 
 def connect(): #this creates the lime file ready to be sent through port 4444
     remote_commands('insmod ./lime.ko \"path=tcp:4444 format=lime\"') #lime is installed in the root directory in this case
